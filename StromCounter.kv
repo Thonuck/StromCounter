@@ -1,0 +1,87 @@
+#: import NavigationLayout kivymd.uix.navigationdrawer.MDNavigationLayout
+#: import MDSeparator kivymd.uix.card.MDSeparator
+
+MDNavigationLayout:
+    ScreenManager:
+        Screen:
+            BoxLayout:
+                orientation: 'vertical'
+                MDTopAppBar:
+                    title: 'Strom Zaehler'
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state('toggle')]]
+                    right_action_items: [["dots-vertical", lambda x: app.callback()], ["clock", lambda x: app.callback()]]
+                    elevation: 5
+
+                MDScreen:
+                    ScreenManager:
+                        id: nested_sm
+                        MDScreen:
+                            name: "Eingeben"
+                            AnchorLayout:
+                                anchor_y: "center"
+                                BoxLayout:
+                                    spacing: 5
+                                    padding: 20
+                                    heigth: 20
+                                    size_hint_y: None
+                                    orientation: "vertical"
+                                        
+                                    MDTextField:
+                                        hint_text: "Zaehlerstand"
+                                    MDTextField:
+                                        hint_text: "Datum"
+                                        text: app.get_date()
+                                    MDTextField:
+                                        hint_text: "Uhrzeit"
+                                        text: app.get_time()
+
+                                    MDFlatButton:
+                                        text: "Eingeben"
+                                        size_hint: 1,1
+                                        on_release:
+                                            app.enter_data()
+
+        
+                        MDScreen:
+                            name: "Anschauen"
+
+                            MDLabel:
+                                text: "Anschauen"
+                                halign: "center"
+        
+    MDNavigationDrawer:
+        id: nav_drawer
+        BoxLayout:
+            orientation: "vertical"
+            Image:
+                source: "DummyLogo.png"
+
+            MDLabel:
+                text: "Meine Uebersicht"
+                font_style: "Subtitle1"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "info@workingtest.com"
+                #font_style: "Caption
+
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            ScrollView:
+                MDList:
+                    OneLineIconListItem:
+                        text: "Eingeben"
+                        on_release:
+                            nav_drawer.set_state('toggle')
+                            nested_sm.current = "Eingeben"
+                        IconLeftWidget:
+                            icon: 'settings'
+                    OneLineIconListItem:
+                        text: "Anschauen"
+                        on_release:
+                            nav_drawer.set_state('toggle')
+                            nested_sm.current = "Anschauen"
+                        IconLeftWidget:
+                            icon: 'face-profile'

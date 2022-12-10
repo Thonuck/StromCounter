@@ -1,0 +1,26 @@
+<EingabeScreen>:
+    name: "Eingeben"
+    AnchorLayout:
+        anchor_y: "center"
+        BoxLayout:
+            spacing: 5
+            padding: 20
+            heigth: 20
+            size_hint_y: None
+            orientation: "vertical"
+                
+            MDTextField:
+                hint_text: "Zaehlerstand"
+            MDTextField:
+                hint_text: "Datum"
+                text: app.get_date()
+            MDTextField:
+                hint_text: "Uhrzeit"
+                text: app.get_time()
+
+            MDFlatButton:
+                text: "Eingeben"
+                size_hint: 1,1
+                on_release:
+                    app.enter_data()
+

@@ -1,6 +1,7 @@
 #: import NavigationLayout kivymd.uix.navigationdrawer.MDNavigationLayout
 #: import MDSeparator kivymd.uix.card.MDSeparator
 
+
 MDNavigationLayout:
     ScreenManager:
         Screen:
@@ -11,36 +12,11 @@ MDNavigationLayout:
                     left_action_items: [["menu", lambda x: nav_drawer.set_state('toggle')]]
                     right_action_items: [["dots-vertical", lambda x: app.callback()], ["clock", lambda x: app.callback()]]
                     elevation: 5
-
+                
                 MDScreen:
                     ScreenManager:
                         id: nested_sm
-                        MDScreen:
-                            name: "Eingeben"
-                            AnchorLayout:
-                                anchor_y: "center"
-                                BoxLayout:
-                                    spacing: 5
-                                    padding: 20
-                                    heigth: 20
-                                    size_hint_y: None
-                                    orientation: "vertical"
-                                        
-                                    MDTextField:
-                                        hint_text: "Zaehlerstand"
-                                    MDTextField:
-                                        hint_text: "Datum"
-                                        text: app.get_date()
-                                    MDTextField:
-                                        hint_text: "Uhrzeit"
-                                        text: app.get_time()
-
-                                    MDFlatButton:
-                                        text: "Eingeben"
-                                        size_hint: 1,1
-                                        on_release:
-                                            app.enter_data()
-
+                        EingabeScreen:
         
                         MDScreen:
                             name: "Anschauen"

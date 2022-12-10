@@ -3,6 +3,7 @@ from kivymd.app import MDApp
 import logging
 import datetime
 import EingabeScreen
+import TabellenScreen
 
 logger = logging.getLogger()
 

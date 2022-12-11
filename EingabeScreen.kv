@@ -1,5 +1,9 @@
 <EingabeScreen>:
+    stand_data: stand_data
+    date_data: date_data
+    time_data: time_data
     AnchorLayout:
+        
         anchor_y: "center"
         BoxLayout:
             spacing: 5
@@ -9,11 +13,14 @@
             orientation: "vertical"
                 
             MDTextField:
+                id: stand_data
                 hint_text: "Zaehlerstand"
             MDTextField:
+                id: date_data
                 hint_text: "Datum"
                 text: app.get_date()
             MDTextField:
+                id: time_data
                 hint_text: "Uhrzeit"
                 text: app.get_time()
 

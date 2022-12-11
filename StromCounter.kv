@@ -4,6 +4,7 @@
 
 <ApplicationLayout>:
     nested_sm: nested_sm
+    entry_screen: entry_screen
     ScreenManager:
         Screen:
             BoxLayout:
@@ -18,6 +19,7 @@
                     ScreenManager:
                         id: nested_sm
                         EingabeScreen:
+                            id: entry_screen
                             name: "Eingabe"
 
                         TabellenScreen:

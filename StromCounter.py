@@ -27,11 +27,16 @@ class StromCounterApp(MDApp):
     def get_time(self):
         return datetime.datetime.now().strftime("%H:%M")
 
+    def get_entered_data(self):
+        return {'date': self.app_layout.entry_screen.date_data.text,
+                'count': self.app_layout.entry_screen.stand_data.text,
+                'time': self.app_layout.entry_screen.time_data.text}
+
     def enter_data(self):
         logger.info("Enter Data Called!")
-        print(dir(self.app_layout.nested_sm))
-        print("Screen Names: {}".format(self.app_layout.nested_sm.screen_names))
+        logger.info("Date Data: [{}]".format(self.get_entered_data()))
         self.app_layout.nested_sm.current = "Anschauen"
+
 
 
 StromCounterApp().run()

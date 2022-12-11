@@ -2,7 +2,8 @@
 #: import MDSeparator kivymd.uix.card.MDSeparator
 
 
-MDNavigationLayout:
+<ApplicationLayout>:
+    nested_sm: nested_sm
     ScreenManager:
         Screen:
             BoxLayout:
@@ -17,8 +18,10 @@ MDNavigationLayout:
                     ScreenManager:
                         id: nested_sm
                         EingabeScreen:
+                            name: "Eingabe"
 
                         TabellenScreen:
+                            name: "Anschauen"
         
     MDNavigationDrawer:
         id: nav_drawer
